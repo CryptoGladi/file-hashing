@@ -7,7 +7,10 @@ fn criterion_benchmark(c: &mut Criterion) {
     let mut hash = Blake2s256::new();
     c.bench_function("file_hashing::get_hash_file", |b| {
         b.iter(|| {
-            file_hashing::get_hash_file(&PathBuf::from("/home/gladi/test-hashing.txt"), &mut hash)
+            file_hashing::get_hash_file(
+                &PathBuf::from("/home/gladi/test-hashing.txt"),
+                &mut hash,
+            )
         })
     });
 

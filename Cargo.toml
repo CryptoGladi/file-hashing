@@ -2,6 +2,9 @@
 name = "file-hashing"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+authors = ["CryptoGladi <mymamchm@mail.ru>"]
+publish = true
 
 [dependencies]
 data-encoding = "2.3"
@@ -10,8 +13,10 @@ rayon = "1.5"
 walkdir = "2.3"
 
 [dev-dependencies]
+assert_fs = "1.0.7"
 blake2 = "0.10.4"
 criterion = { version = "0.4.0", features = ["html_reports"] }
+rand = "0.8.5"
 
 [profile.release]
 opt-level = 3
