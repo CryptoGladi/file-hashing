@@ -4,7 +4,7 @@ use std::path::PathBuf;
 
 mod common;
 
-fn criterion_benchmark(c: &mut Criterion) {
+fn all_benchmark(c: &mut Criterion) {
     let mut hash = Blake2s256::new();
     let (_temp_dir_one_file, path_one_file) =
         common::generate_random_file(32);
@@ -50,5 +50,5 @@ fn criterion_benchmark(c: &mut Criterion) {
     });
 }
 
-criterion_group!(benches, criterion_benchmark);
+criterion_group!(benches, all_benchmark);
 criterion_main!(benches);

@@ -1,3 +1,5 @@
+//! Create files for bench
+
 use assert_fs::{fixture::ChildPath, prelude::*};
 use rand::Rng;
 use std::{cmp, fs::File, io::BufWriter, io::Write};
