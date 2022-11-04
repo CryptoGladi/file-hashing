@@ -3,8 +3,19 @@ name = "file-hashing"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-data-encoding = "2.3.2"
-digest = "0.10.5"
+data-encoding = "2.3"
+digest = "0.10"
+rayon = "1.5"
+walkdir = "2.3"
+
+[dev-dependencies]
+blake2 = "0.10.4"
+criterion = { version = "0.4.0", features = ["html_reports"] }
+
+[profile.release]
+opt-level = 3
+
+[[bench]]
+name = "benchmark"
+harness = false
