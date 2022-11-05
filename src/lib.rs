@@ -1,4 +1,4 @@
-//! This crate will help you easily get hash from files or folders
+//! This crate will help you easily get hash from **files** or **folders**
 //!
 //! # Example
 //!

@@ -42,12 +42,12 @@ pub mod extra {
             let to_write = cmp::min(remaining_size, buffer.len());
             let buffer = &mut buffer[..to_write];
             rng.fill(buffer);
-            writer.write(buffer).unwrap();
+            writer.write_all(buffer).unwrap();
 
             remaining_size -= to_write;
         }
 
-        return (temp, input_file);
+        (temp, input_file)
     }
 
     pub fn generate_random_folder_with_files(
@@ -71,14 +71,14 @@ pub mod extra {
                 let to_write = cmp::min(remaining_size, buffer.len());
                 let buffer = &mut buffer[..to_write];
                 rng.fill(buffer);
-                writer.write(buffer).unwrap();
+                writer.write_all(buffer).unwrap();
 
                 remaining_size -= to_write;
             }
 
-            input_files.push(input_file.into());
+            input_files.push(input_file);
         }
 
-        return (temp, input_files);
+        (temp, input_files)
     }
 }

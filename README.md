@@ -1,4 +1,6 @@
-This crate will help you easily get hash from files or folders
+# file-hashing
+
+This crate will help you easily get hash from **files** or **folders**
 
 # Example
 
@@ -12,3 +14,11 @@ assert_eq!(result.len(), 64); // Blake2s256 len == 64
 ```
 
 > P.S. If the examples from the documentation **do not work**, then you need to look at the **unit tests**
+
+# Motivation
+
+Each time we write our own function to get the hash from a file or folder.
+We repeat ourselves and violate the [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself) principle.
+With this crate you can save a couple of hours
+
+License: **MIT**
