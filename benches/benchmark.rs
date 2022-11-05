@@ -1,15 +1,14 @@
 use blake2::{Blake2s256, Digest};
 use criterion::{criterion_group, criterion_main, Criterion};
+use file_hashing::fs::extra as fs_extra;
 use std::path::PathBuf;
-
-mod common;
 
 fn all_benchmark(c: &mut Criterion) {
     let mut hash = Blake2s256::new();
     let (_temp_dir_one_file, path_one_file) =
-        common::generate_random_file(32);
+        fs_extra::generate_random_file(322);
     let (temp_dir_many_files, _path_many_files) =
-        common::generate_random_folder_with_files(325, 32);
+        fs_extra::generate_random_folder_with_files(3255, 322);
 
     c.bench_function("file_hashing::get_hash_file", |b| {
         b.iter(|| {
