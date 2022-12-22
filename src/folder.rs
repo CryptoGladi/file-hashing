@@ -1,7 +1,7 @@
 //! Folder functions
 
-use std::path::PathBuf;
 use super::*;
+use std::path::PathBuf;
 
 /// Get hash from **folder**
 ///

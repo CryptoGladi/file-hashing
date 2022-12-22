@@ -1,6 +1,6 @@
 //! File functions
 
-use super::{IOError, IOErrorKind, ProgressInfo, PAGE_SIZE, DynDigest};
+use super::{DynDigest, IOError, IOErrorKind, ProgressInfo, PAGE_SIZE};
 use std::{fs::File, io::Read, path::Path};
 
 /// Get hash from **file**
