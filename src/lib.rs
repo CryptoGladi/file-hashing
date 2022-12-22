@@ -22,7 +22,7 @@ pub mod file;
 pub mod folder;
 pub mod fs;
 
-use digest::Digest;
+use digest::DynDigest;
 use std::io::Error as IOError;
 use std::io::ErrorKind as IOErrorKind;
 use std::path::Path;

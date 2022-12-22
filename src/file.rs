@@ -1,7 +1,6 @@
 //! File functions
 
-use super::{IOError, IOErrorKind, ProgressInfo, PAGE_SIZE};
-use digest::Digest;
+use super::{IOError, IOErrorKind, ProgressInfo, PAGE_SIZE, DynDigest};
 use std::{fs::File, io::Read, path::Path};
 
 /// Get hash from **file**
@@ -25,7 +24,7 @@ pub fn get_hash_file<HashType, P>(
     hash: &mut HashType,
 ) -> Result<String, IOError>
 where
-    HashType: Digest + Clone,
+    HashType: DynDigest + Clone,
     P: AsRef<Path>,
 {
     let mut file = File::open(path)?;
@@ -89,7 +88,7 @@ pub fn get_hash_files<HashType, P>(
     progress: impl Fn(ProgressInfo),
 ) -> Result<String, IOError>
 where
-    HashType: Digest + Clone + std::marker::Send,
+    HashType: DynDigest + Clone + std::marker::Send,
     P: AsRef<Path> + std::marker::Sync,
 {
     if paths.is_empty() {
@@ -105,7 +104,7 @@ where
     for path in paths.iter() {
         jobs.push(pool.install(|| -> Result<(), std::io::Error> {
             let file_hash = get_hash_file(path, hash)?;
-            hash.update(file_hash);
+            hash.update(file_hash.as_bytes());
             Ok(())
         }));
     }

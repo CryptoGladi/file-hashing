@@ -1,7 +1,6 @@
 //! Folder functions
 
 use std::path::PathBuf;
-
 use super::*;
 
 /// Get hash from **folder**
@@ -38,7 +37,7 @@ pub fn get_hash_folder<HashType, P>(
     progress: impl Fn(ProgressInfo),
 ) -> Result<String, IOError>
 where
-    HashType: Digest + Clone + std::marker::Send,
+    HashType: DynDigest + Clone + std::marker::Send,
     P: AsRef<Path> + std::marker::Sync,
 {
     get_hash_files(
@@ -83,7 +82,7 @@ pub fn get_hash_folders<HashType, P>(
     progress: impl Fn(ProgressInfo),
 ) -> Result<String, IOError>
 where
-    HashType: Digest + Clone + std::marker::Send,
+    HashType: DynDigest + Clone + std::marker::Send,
     P: AsRef<Path> + std::marker::Sync,
 {
     let mut paths: Vec<PathBuf> = vec![];
